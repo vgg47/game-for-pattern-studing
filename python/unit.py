@@ -1,3 +1,6 @@
+""" Created by Vladimir Gonchrov, 11.04.2018 
+	This file declares base class Unit """
+
 class Unit(object):
 	def __init__(self, **characteristics):
 		self.cost = characteristics['cost']
@@ -11,3 +14,9 @@ class Unit(object):
 	@staticmethod
 	def message():
 		pass
+
+	def check_attack(self):
+		if self.attack == None:
+			return 0
+		else: 
+			return self.attack

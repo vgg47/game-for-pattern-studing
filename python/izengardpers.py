@@ -1,3 +1,8 @@
+""" Created by Vladimir Gonchrov, 11.04.2018 
+	This file declares specific classes of units of the race Izengard
+	message() is method which prints message when unit is created
+	check_attack() is method which prints units attack """
+
 from unithierarchy import Izengard, DamageDealer, Support 
 
 class OrcWorker(Izengard, DamageDealer):

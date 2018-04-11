@@ -1,3 +1,7 @@
+""" Created by Vladimir Gonchrov, 11.04.2018 
+	This file declares races and types classes """
+
+
 from unit import Unit
 
 class Gondor(Unit):
