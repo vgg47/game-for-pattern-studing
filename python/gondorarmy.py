@@ -8,7 +8,7 @@ class GondorArmy(Army):
     """docstring for GondorArmy"""
 
     def __init__(self, uf):
-        super(GondorArmy, self).__init__(uf)
+        super().__init__(uf)
         self.army['soldier'] = []
         self.army['archer'] = []
         self.army['knight'] = []

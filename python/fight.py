@@ -8,5 +8,5 @@ def count_attack(real_army):
     sum_attack = 0
     for type_unit in real_army.army:
         for concrete_unit in real_army.army[type_unit]:
-            sum_attack += concrete_unit.check_attack()
+            sum_attack += concrete_unit.get_attack()
     return sum_attack

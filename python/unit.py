@@ -16,7 +16,7 @@ class Unit(object):
     def message():
         pass
 
-    def check_attack(self):
+    def get_attack(self):
         if self.attack is None:
             return 0
         else:
