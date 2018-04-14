@@ -8,15 +8,17 @@ from unithierarchy import Gondor, DamageDealer, Support
 
 class Soldier(Gondor, DamageDealer):
 	"""docstring for Soldier"""
-	def __init__(self, **characteristics):
-		super().__init__(**characteristics)
+	def __init__(self, magic_spell = 20, attack = 15, attack_range = 5, attack_speed = 40,\
+				attack_type = "phys", cost = 45, health = 70, speed = 5, defence = 30,\
+				magic_resistance = 15, phys_resistance = 10):
+		super().__init__(magic_spell = 20, attack = 15, attack_range = 5, attack_speed = 40,\
+				attack_type = "phys", cost = 45, health = 70, speed = 5, defence = 30,\
+				magic_resistance = 15, phys_resistance = 10)
 	
 	@staticmethod
 	def message():
 		print("New Soldier is created")
-	
-	def check_attack(self):
-		return self.attack
+
 
 class Archer(Gondor, DamageDealer):
 	def __init__(self, **characteristics):
@@ -26,9 +28,6 @@ class Archer(Gondor, DamageDealer):
 	def message():
 		print("New Archer is created")
 
-	def check_attack(self):
-		return self.attack
-
 class Knight(Gondor, DamageDealer):
 	def __init__(self, **characteristics):
 		super().__init__(**characteristics)
@@ -36,9 +35,6 @@ class Knight(Gondor, DamageDealer):
 	@staticmethod
 	def message():
 		print("New Knight is created")
-
-	def check_attack(self):
-		return self.attack
 
 class GuardianOfCitadeles(Gondor, DamageDealer):
 	def __init__(self, **characteristics):
@@ -48,9 +44,6 @@ class GuardianOfCitadeles(Gondor, DamageDealer):
 	def message():
 		print("New Guardian of Citadeles is created")
 
-	def check_attack(self):
-		return self.attack
-
 class Pathfinder(Gondor, Support):
 	"""docstring for Pathfinder"""
 	def __init__(self, **characteristics):
@@ -59,9 +52,6 @@ class Pathfinder(Gondor, Support):
 	@staticmethod
 	def message():
 		print("New Pathfinder is created")
-
-	def check_attack(self):
-		return self.attack
 
 """--------------------в проекте осадные орудия и тд и тп-----------------"""
 
@@ -74,5 +64,3 @@ class Pathfinder(Gondor, Support):
 # 	def message():
 # 		print("New SiegeGun is created")
 
-#   def check_attack(self):
-#   return self.attack
