@@ -6,7 +6,7 @@ from army import Army
 
 def count_attack(real_army):
     sum_attack = 0
-    for j in real_army.army:
-        for i in real_army.army[j]:
-            sum_attack += i.check_attack()
+    for type_unit in real_army.army:
+        for concrete_unit in real_army.army[type_unit]:
+            sum_attack += concrete_unit.check_attack()
     return sum_attack
