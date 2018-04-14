@@ -21,7 +21,7 @@ class Army(object):
 # названия всех типов и id. если найдет такое, то вывести сообщение "Данный персонаж
 # вам недоступен", если нет, то вывести сообщение "Неккоректный ввод"
 	def hire(self, _type):
-		for concrete_race in all_type_units:
-			for concrete_type in concrete_race:
-				if 
+		# for concrete_race in all_type_units:
+		# 	for concrete_type in concrete_race:
+		# 		if
 		self.army[_type].append(self.uf.create_unit(_type))
