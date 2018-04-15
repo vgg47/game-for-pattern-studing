@@ -23,8 +23,8 @@ def choice_side(_race):
     elif _race == "izengard" or _race == "2":
         return IzengardUnitFactory()
     else:
-        print("Incorrect input!")
-        return choice_side()
+        raise Exception:
+        	print("incorrect input")
 
 
 def create_army(_race, _factory):
@@ -33,19 +33,24 @@ def create_army(_race, _factory):
     elif _race == "izengard" or _race == "2":
         return IzengardArmy(_factory)
     else:
-        print("Incorrect input!")
-        return create_army(_race, _factory)
+        raise Exception:
+        	print("incorrect input")
 
 
-choosen_race = input("Choose your side: Gondor or Izengard? ").lower()
-uf = choice_side(choosen_race)
-myArmy = create_army(choosen_race, uf)
-a = uf.create_unit("soldier")
+def main():
+	choosen_race = input("Choose your side: Gondor or Izengard? ").lower()
+	uf = choice_side(choosen_race)
+	myArmy = create_army(choosen_race, uf)
+	a = uf.create_unit("soldier")
 
-# нужно допилить чтобы персонажа определнного типа
-# нельщя было запихнуть в чужой лист
-for i in range(2):
-    myArmy.hire("soldier")
-    print("attack force your army:", ft.count_attack(myArmy))
-    myArmy.hire("archer")
-    print("attack force your army:", ft.count_attack(myArmy))
+	# нужно допилить чтобы персонажа определнного типа
+	# нельщя было запихнуть в чужой лист
+	for i in range(2):
+	    myArmy.hire("soldier")
+	    print("attack force your army:", ft.count_attack(myArmy))
+	    myArmy.hire("archer")
+	    print("attack force your army:", ft.count_attack(myArmy))
+
+
+if __name__ == '__main__':
+   	main()     
