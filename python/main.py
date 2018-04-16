@@ -28,7 +28,13 @@ def choice_side(_race):
 
 
 def create_army(_race, _factory):
-incorrect input")
+    if _race == "gondor" or _race == "1":
+        return GondorArmy(_factory)
+    elif _race == "izengard" or _race == "2":
+        return IzengardArmy(_factory)
+    else:
+        raise Exception:
+            print("incorrect input")
 
 
 def main():
