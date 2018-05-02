@@ -8,9 +8,3 @@ sys.path.append('./army')
 from army import Army
 
 
-def count_attack(real_army):
-    sum_attack = 0
-    for squad in real_army.squads:
-        for concrete_unit in real_army.squads[squad]:
-            sum_attack += concrete_unit.get_attack()
-    return sum_attack

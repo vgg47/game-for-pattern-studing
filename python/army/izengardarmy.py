@@ -7,6 +7,6 @@ from army import Army
 class IzengardArmy(Army):
     """docstring for IzengardArmy"""
 
-    def __init__(self, uf):
-        super().__init__(uf)
-        self.available_unit = ['orc_worker', 'uruk hai', 'uruk shooter', 'berserk', 'shaman', 'horseman']
+    def __init__(self, uf, name_army, mobilized=None):
+        super().__init__(uf, name_army, mobilized)
+        self.available_unit = ('orcworker', 'urukhai', 'urukshooter', 'berserk', 'shaman', 'horseman')

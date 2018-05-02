@@ -10,11 +10,6 @@ class Unit(object):
         self.defence = characteristics['defence']
         self.magic_resistance = characteristics['magic_resistance']
         self.phys_resistance = characteristics['phys_resistance']
-        self.message()
-
-    @staticmethod
-    def message():
-        pass
 
     def get_attack(self):
         if self.attack is None:
