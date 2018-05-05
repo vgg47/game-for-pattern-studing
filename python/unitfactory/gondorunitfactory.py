@@ -18,7 +18,7 @@ class GondorUnitFactory(UnitFactory):
         return Soldier(magic_spell=20, attack=15, attack_range=5,
                        attack_speed=40, attack_type="phys", cost=45, health=70,
                        speed=5, defence=30, magic_resistance=15,
-                       phys_resistance=10)
+                       phys_resistance=10, wall_of_shield=False)
 
     def create_archer(self):
         return Archer(magic_spell=20, attack=12, attack_range=20,
@@ -52,7 +52,7 @@ class GondorUnitFactory(UnitFactory):
             return self.create_soldier()
         elif _type == "archer" or _type == "112":
             return self.create_archer()
-        elif _type == "khight" or _type == "113":
+        elif _type == "knight" or _type == "113":
             return self.create_knight()
         elif _type == "guardian of citadeles" or _type == "114":
             return self.create_guardian_of_citadeles()

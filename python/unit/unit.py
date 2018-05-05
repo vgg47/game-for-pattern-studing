@@ -16,3 +16,6 @@ class Unit(object):
             return 0
         else:
             return self.attack
+
+    def get_defence(self):
+        return self.defence

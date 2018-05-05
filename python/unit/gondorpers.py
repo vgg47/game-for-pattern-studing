@@ -9,6 +9,13 @@ from unithierarchy import Gondor, DamageDealer, Support
 class Soldier(Gondor, DamageDealer):
     def __init__(self, **characteristics):
         super().__init__(**characteristics)
+        self.wall_of_shield = characteristics['wall_of_shield']
+
+    def wall_of_shield(self):
+        self.speed = self.speed * 0.7
+        self.defence = self.defence * 1.8
+        self.wall_of_shield = True
+
 
 
 class Archer(Gondor, DamageDealer):

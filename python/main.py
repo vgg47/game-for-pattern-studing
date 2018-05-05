@@ -27,7 +27,8 @@ import dialogues as dia
 def main():
     player = dia.read_base_info()
     dia.choice_of_action(player)
-    print(player.count_attack())
+    # print(player.count_attack())
+    print(player.army[0].squads)
     
 
 if __name__ == '__main__':
