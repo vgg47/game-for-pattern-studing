@@ -16,7 +16,7 @@ class GondorUnitFactory(UnitFactory):
 
     def create_soldier(self):
         return Soldier(magic_spell=20, attack=15, attack_range=5,
-                       attack_speed=40, attack_type="phys", cost=45, health=70,
+                       attack_speed=40, attack_type='phys', cost=45, health=70,
                        speed=5, defence=30, magic_resistance=15,
                        phys_resistance=10, type='солдат', wall_of_shield=False)
 
