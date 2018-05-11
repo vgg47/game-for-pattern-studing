@@ -5,7 +5,7 @@ second digit is responsible for type: 1 - Damage Dealer, 2 - Support"""
 
 import sys
 
-sys.path.append('/home/elevely/tp/python/unit')
+sys.path.append('./unit')
 
 from gondorpers import Soldier, Archer, Knight, Pathfinder, GuardianOfCitadeles
 from unitfactory import UnitFactory
