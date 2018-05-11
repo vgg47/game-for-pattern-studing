@@ -15,52 +15,52 @@ class IzengardUnitFactory(UnitFactory):
         return OrcWorker(fury=20, attack=20, attack_range=5, attack_speed=30,
                          attack_type="phys", cost=50, health=60, speed=5,
                          defence=20,
-                         magic_resistance=10, phys_resistance=20)
+                         magic_resistance=10, phys_resistance=20, type='оркрабочий')
 
     def create_uruk_hai(self):
         return UrukHai(fury=40, attack=35, attack_range=5, attack_speed=40,
                        attack_type="phys", cost=80, health=90, speed=7,
                        defence=30,
-                       magic_resistance=15, phys_resistance=30)
+                       magic_resistance=15, phys_resistance=30, type='урукхай')
 
     def create_uruk_shooter(self):
         return UrukShooter(fury=15, attack=15, attack_range=20,
                            attack_speed=40,
                            attack_type="phys", cost=70, health=70, speed=5,
                            defence=15,
-                           magic_resistance=15, phys_resistance=10)
+                           magic_resistance=15, phys_resistance=10, type='урукстрелок')
 
     def create_berserk(self):
         return Berserk(fury=100, attack=40, attack_range=7, attack_speed=40,
                        attack_type="phys", cost=100, health=100, speed=9,
                        defence=30,
-                       magic_resistance=30, phys_resistance=30)
+                       magic_resistance=30, phys_resistance=30, type='берсерк')
 
     def create_shaman(self):
         return Shaman(fury=30, heal=20, heal_range=15,
                       heal_speed=30, increase_attack=20, increase_defence=20,
                       cost=60, health=40, speed=5, defence=20,
-                      magic_resistance=30, phys_resistance=30)
+                      magic_resistance=30, phys_resistance=30, type='шаман')
 
     def create_horseman(self):
         return Horseman(fury=30, attack=30, attack_range=7, attack_speed=35,
                         attack_type="phys", cost=90, health=80, speed=15,
                         defence=35,
-                        magic_resistance=15, phys_resistance=15)
+                        magic_resistance=15, phys_resistance=15, type='всадник')
 
     def create_unit(self, _type):
         _type = _type.lower()
-        if _type == "orc worker" or _type == "211":
+        if _type == "oркрабочий" or _type == "211":
             return self.create_orc_worker()
-        elif _type == "uruk hai" or _type == "212":
+        elif _type == "урукхай" or _type == "212":
             return self.create_uruk_hai()
-        elif _type == "uruk shooter" or _type == "213":
+        elif _type == "урукстрелок" or _type == "213":
             return self.create_uruk_shooter
-        elif _type == "berserk" or _type == "214":
+        elif _type == "берсерк" or _type == "214":
             return self.create_berserk()
-        elif _type == "shaman" or _type == "221":
+        elif _type == "шаман" or _type == "221":
             return self.create_shaman()
-        elif _type == "horseman" or _type == "215":
+        elif _type == "всадник" or _type == "215":
             return self.create_horseman()
         else:
-            print("Incorrect input")
+            print("Incorrect input on _type = {}".format(_type))

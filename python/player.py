@@ -36,8 +36,8 @@ class Player():
     def count_attack(self, real_army=None):
         summ = 0
         if (real_army == None):
-            for concrete_army in self.army:
-                summ += concrete_army.count_attack()
+            for index_concrete_army in self.army:
+                summ += index_concrete_army.count_attack()
         else:
             print(type(real_army))
             summ += real_army.count_attack()
@@ -46,27 +46,24 @@ class Player():
     def count_defence(self, real_army=None):
         summ = 0
         if (real_army == None):
-            for concrete_army in self.army:
-                summ += concrete_army.count_defence()
+            for index_concrete_army in self.army:
+                summ += index_concrete_army.count_defence()
         else:
             print(type(real_army))
             summ += real_army.count_defence()
         return summ
+        
+    def set_number_of_steps(self, index_concrete_army):
+        value = self.army[index_concrete_army].number_of_steps
+        self.army[index_concrete_army].set_number_of_steps(value + 1)
+        self.gold -= price.number_of_steps[value]
 
-    def set_number_of_steps(self, concrete_army):
-        value = self.army[concrete_army].number_of_steps + 5
-        if self.gold >= price.number_of_steps[value]:
-            self.army[concrete_army].set_number_of_steps(value)
-            self.gold -= price.number_of_steps[value]
-            return True
-        else:
-            return False
 
-    def set_morale(self, concrete_army):
-        value = self.army[concrete_army].morale + 0.25
-        if self.gold >= price.morale[value]:
-            self.army[concrete_army].set_morale(value)
-            self.gold -= price.morale[value]
-            return True
-        else:
-            return False
+    def set_morale(self, index_concrete_army):
+        value = self.army[index_concrete_army].morale
+        self.army[index_concrete_army].set_morale(value + 0.25)
+        self.gold -= price.morale[value]
+        
+
+    def show_squad(self, index_concrete_army, index_squad):
+        self.army[index_concrete_army].show_squad(index_squad)

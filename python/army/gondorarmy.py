@@ -7,6 +7,8 @@ from army import Army
 class GondorArmy(Army):
     """docstring for GondorArmy"""
 
-    def __init__(self, uf, name_army, owner, morale, number_of_step, mobilized=None):
-        super().__init__(uf, name_army, mobilized, owner)
-        self.available_unit = ('soldier', 'archer', 'knight', 'guardianofcitadeles', 'pathfinder')
+    def __init__(self, uf, name_army, owner=None, morale=1, number_of_steps=1,
+                 mobilized=False):
+        super().__init__(uf, name_army, owner, morale, number_of_steps, mobilized)
+        self.available_unit = ('солдат', 'лучник', 'рыцарь',
+                               'стражцитадели', 'следопыт')

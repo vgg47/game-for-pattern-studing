@@ -1,5 +1,5 @@
 from player import Player
-from price import price
+import price
 import army
 
 
@@ -28,7 +28,7 @@ def read_base_info():
 def choice_of_action(player):
     while True:
         action = input(
-            'Выбери действие: \n1) Отправиться в поход\n2) Развивать войска\n3) Развивать замки\n')
+            'Выбери действие: \n1) Отправиться в поход\n2) Развивать войска\n3) Развивать замки\n4) Закрыть игру\n')
         if action == '1':
             crusade(player)
         elif action == '2':
@@ -36,7 +36,8 @@ def choice_of_action(player):
         elif action == '3':
             print("in development")
             # develop_castles()
-        break
+        elif action == '4':
+            break
 
 
 def try_to_int(x):
@@ -46,47 +47,84 @@ def try_to_int(x):
         return x
 
 
-def develop_economy_of_army(player, current_army)
+def upgrade_number_of_steps(player, index_current_army):
     while True:
-        action = input(
-            "Выбери, что ты хочешь улучшить:\n1) Увеличить запас хода армии\n2) Поднять боевой дух армии\n3) Вернуться назад\n")
-        while True:
-            if action == '1':
-                if  player.army[current_army].number_of_steps < army.max_number_of_steps:
-                    choice = input("Текущий запас хода {}. Улучшение будет стоить {} золота.\nВ данный момента у игрока {} золота. Произвести улучшение?\n".format(player.army[current_army], price.number_of_steps[player.army[current_army].number_of_steps], player.gold))
-                    if choice in "yes" or choise == '1':
-                        player.army[current_army].set_number_of_steps()
-                    else:
-                        break
+        cur_value = player.army[index_current_army].number_of_steps
+        print(cur_value)
+        if cur_value < army.max_number_of_steps:
+            choice = input("Текущий запас хода {}. Улучшение будет стоить {} золота.\nВ данный момента у игрока {} золота. Произвести улучшение?\n".format(
+                cur_value, price.number_of_steps[cur_value], player.gold))
+            if choice.lower() in "да" or choice == '1':
+                if player.gold >= price.number_of_steps[cur_value]:
+                    player.set_number_of_steps(index_current_army)
                 else:
-                    print("Запас хода твоей армии максимален, так держать!")
+                    print("У вас недостаточно золота")
                     break
-            elif action == '2':
-                if  player.army[current_army] .morale < army.max_morale:
-                    choice = input("Текущий боевой дух {}. Улучшение будет стоить {} золота.\nВ данный момента у игрока {} золота. Произвести улучшение?\n".format(player.army[current_army].morale, price.morale[player.army[current_army].morale], player.gold))
-                    if choice in "yes" or choise == '1':
-                        player.army[current_army].set_morale()
-                    else:
-                        break
-                else:
-                    print("Боевой дух твоей армии максимален, так держать!")
-                    break
-            elif action == '3':
+            elif choice.lower() in 'нет' or choice == '2':
                 break
             else:
                 print("Некорректный ввод")
+        else:
+            print("Запас хода твоей армии максимален, так держать!")
+            break
 
-def hire_troops(player, current_army):
+
+def upgrade_morale(player, index_current_army):
+    while True:
+        cur_value = player.army[index_current_army].morale
+        if float(cur_value) < army.max_morale:
+            choice = input("Текущий боевой дух {}. Улучшение будет стоить {} золота.\nВ данный момента у игрока {} золота. Произвести улучшение?\n".format(
+                cur_value, price.morale[cur_value], player.gold))
+            if choice.lower() in "да" or choice == '1':
+                if player.gold >= price.morale[cur_value]:
+                    player.set_morale(index_current_army)
+                else:
+                    print("У вас недостаточно золота")
+                    break
+            elif choice.lower() in 'нет' or choice == '2':
+                break
+            else:
+                print("Некорректный ввод")
+        else:
+            print("Боевой дух твоей армии максимален, так держать!")
+            break
+
+
+def develop_economy_of_army(player, index_current_army):
+    while True:
+        print("Выбери, что ты хочешь улучшить:")
+        print("1) Увеличить запас хода армии")
+        print("2) Поднять боевой дух армии")
+        print("3) Вернуться назад")
+        action = input()
+        if action == '1':
+            upgrade_number_of_steps(player, index_current_army)
+            break
+        elif action == '2':
+            upgrade_morale(player, index_current_army)
+            break
+        elif action == '3':
+            break
+        else:
+            print("Некорректный ввод")
+
+
+def hire_troops(player, index_current_army):
     try:
-        _squad_index = int(input(
-            "Введи номер отряда до {}, в который ты хочешь нанимать войска. Если хочешь создать новый отряд - введи 0.\n".format(len(player.army[current_army].squads)))) - 1
+        index_squad = int(input(
+            "Введи номер отряда до {}, в который ты хочешь нанимать войска. Если хочешь создать новый отряд - введи 0.\n".format(len(player.army[index_current_army].squads)))) - 1
+        player.show_squad(index_current_army, index_squad)
         print("Введи тип юнита для найма и количество: ")
+    except:
+        print("Введите корректный аргумент")
+        hire_troops(player, index_current_army)
+    try:
         _type, _quantity = map(try_to_int, input().split())
-        player.army[current_army].hire(
-            _squad_index, _type, _quantity)
+        player.army[index_current_army].hire(
+            index_squad, _type, _quantity)
     except ValueError:
         print("Введите два корректных аргумента")
-        hire_troops(player, current_army)
+        hire_troops(player, index_current_army)
 
 
 def crusade(player):
@@ -101,14 +139,19 @@ def develop_troops(player):
             print('Выбери номер армии: ')
             for i in range(len(player.army)):
                 print('{}) {}'.format(i + 1, player.army[i].name_army))
-            current_army = int(input()) - 1
+            while True:
+                try:
+                    index_current_army = int(input()) - 1
+                    break
+                except:
+                    print("Некорректный ввод")
             while True:
                 sub_action = input(
                     "1) Развивать экономику\n2) Нанимать войска\n3) Вернуться назад\n")
                 if sub_action == '1':
-                    develop_economy_of_army(player, current_army)
+                    develop_economy_of_army(player, index_current_army)
                 elif sub_action == '2':
-                    hire_troops(player, current_army)
+                    hire_troops(player, index_current_army)
                 elif sub_action == '3':
                     break  # нужно сделать переход к след части кода
         elif action == '2':
