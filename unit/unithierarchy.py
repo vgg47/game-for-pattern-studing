@@ -26,9 +26,24 @@ class DamageDealer(Unit):
     def __init__(self, **characteristics):
         self.attack = characteristics['attack']
         self.attack_range = characteristics['attack_range']
-        self.attack_speed = characteristics['attack_speed']
         self.attack_type = characteristics['attack_type']
         super().__init__(**characteristics)
+
+    def action(self, enemy, reply=True):
+        if self.attack_type == 'phys':
+            protection_factor = enemy.phys_resistance
+        else:
+            protection_factor = enemy.magic_resistance
+        difference = self.attack - protection_factor - enemy.defence
+        if difference > 0:
+            enemy.health = max(enemy.health - difference, 0)
+            if enemy.health > 0:
+                if isinstance(enemy, DamageDealer) and enemy.attack_range >= \
+                        self.attack_range and reply == True:
+                    enemy.action(self, reply=False)
+
+    def get_attack(self):
+        return self.attack
 
 
 class Support(Unit):
@@ -36,8 +51,15 @@ class Support(Unit):
 
     def __init__(self, **characteristics):
         self.heal = characteristics['heal']
-        self.heal_range = characteristics['heal_range']
-        self.heal_speed = characteristics['heal_speed']
         self.increase_attack = characteristics['increase_attack']
         self.increase_defence = characteristics['increase_defence']
         super().__init__(**characteristics)
+
+    def action(self, ally):
+        ally.defence += self.increase_defence
+        ally.attack += self.increase_attack
+        ally.heal += self.heal
+
+    def get_attack(self):
+        return 0
+      

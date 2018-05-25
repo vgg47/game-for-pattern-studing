@@ -9,7 +9,7 @@ from gondorarmy import GondorArmy
 from gondorunitfactory import GondorUnitFactory
 from izengardunitfactory import IzengardUnitFactory
 from army import Army
-import price
+import data
 
 
 class Player():
@@ -56,14 +56,25 @@ class Player():
     def set_number_of_steps(self, index_concrete_army):
         value = self.army[index_concrete_army].number_of_steps
         self.army[index_concrete_army].set_number_of_steps(value + 1)
-        self.gold -= price.number_of_steps[value]
+        self.gold -= data.PRICE_NUMBER_OF_STEPS[value]
 
 
     def set_morale(self, index_concrete_army):
         value = self.army[index_concrete_army].morale
         self.army[index_concrete_army].set_morale(value + 0.25)
-        self.gold -= price.morale[value]
+        self.gold -= data.PRICE_MORALE[value]
         
 
     def show_squad(self, index_concrete_army, index_squad):
         self.army[index_concrete_army].show_squad(index_squad)
+
+
+    def set_camp(self):
+        value = 0
+        for squad in self.army[0].squads:
+            for unit in squad:
+                value += unit.defence + unit.health 
+                unit.defence = data.MAX_DEFENCE[unit.type]
+                unit.health = data.MAX_HEALTH[unit.type]
+        self.gold += value
+

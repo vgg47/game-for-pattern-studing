@@ -10,5 +10,6 @@ class Castle(object):
 		self.name = characteristics['name']
 		self.defenses = characteristics['defenses']
 		self.gold = characteristics['gold']
+		self.level = characteristics['level']
 
 # здесь должен быть билдер :\

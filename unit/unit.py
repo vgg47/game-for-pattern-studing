@@ -11,12 +11,11 @@ class Unit(object):
         self.magic_resistance = characteristics['magic_resistance']
         self.phys_resistance = characteristics['phys_resistance']
         self.type = characteristics['type']
-
-    def get_attack(self):
-        if self.attack is None:
-            return 0
-        else:
-            return self.attack
+        self.used_skill = characteristics['used_skill']
 
     def get_defence(self):
         return self.defence
+
+
+    def get_attack(self):
+        pass

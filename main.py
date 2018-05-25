@@ -11,7 +11,7 @@ import argparse
 sys.path.append('./army')
 sys.path.append('./unitfactory')
 parser = argparse.ArgumentParser()
-parser.add_argument('--size', default=20, required=False, help='Размер игровой карты')
+parser.add_argument('--size', default=10, required=False, help='Размер игровой карты')
 
 
 from izengardarmy import IzengardArmy
@@ -31,12 +31,10 @@ import map
 
 def main():
     args = parser.parse_args()
-    game_map, castle_coordinate = map.generate_map(int(args.size))
     player = dia.read_base_info()
-    dia.choice_of_action(player)
+    game_map, castle_coordinate = map.generate_map(int(args.size), player)
+    dia.choice_of_action(player, game_map, castle_coordinate)
     # print(player.count_attack())
-    print(player.army[0].squads)
-
 
 if __name__ == '__main__':
     main()

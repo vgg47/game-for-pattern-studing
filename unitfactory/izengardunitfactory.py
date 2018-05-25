@@ -12,41 +12,46 @@ class IzengardUnitFactory(UnitFactory):
     """-----methods that create units of the race izengard-------------"""
 
     def create_orc_worker(self):
-        return OrcWorker(fury=20, attack=20, attack_range=5, attack_speed=30,
+        return OrcWorker(fury=20, attack=20, attack_range=5,
                          attack_type="phys", cost=50, health=60, speed=5,
                          defence=20,
-                         magic_resistance=10, phys_resistance=20, type='оркрабочий')
+                         magic_resistance=10, phys_resistance=20,
+                         type='оркрабочий', used_skill=False)
 
     def create_uruk_hai(self):
-        return UrukHai(fury=40, attack=35, attack_range=5, attack_speed=40,
+        return UrukHai(fury=40, attack=35, attack_range=5,
                        attack_type="phys", cost=80, health=90, speed=7,
                        defence=30,
-                       magic_resistance=15, phys_resistance=30, type='урукхай')
+                       magic_resistance=15, phys_resistance=30,
+                       type='урукхай', used_skill=False)
 
     def create_uruk_shooter(self):
         return UrukShooter(fury=15, attack=15, attack_range=20,
-                           attack_speed=40,
                            attack_type="phys", cost=70, health=70, speed=5,
                            defence=15,
-                           magic_resistance=15, phys_resistance=10, type='урукстрелок')
+                           magic_resistance=15, phys_resistance=10,
+                           type='урукстрелок', used_skill=False)
 
     def create_berserk(self):
-        return Berserk(fury=100, attack=40, attack_range=7, attack_speed=40,
+        return Berserk(fury=100, attack=40, attack_range=7,
                        attack_type="phys", cost=100, health=100, speed=9,
                        defence=30,
-                       magic_resistance=30, phys_resistance=30, type='берсерк')
+                       magic_resistance=30, phys_resistance=30,
+                       type='берсерк', used_skill=False)
 
     def create_shaman(self):
-        return Shaman(fury=30, heal=20, heal_range=15,
-                      heal_speed=30, increase_attack=20, increase_defence=20,
+        return Shaman(fury=30, heal=20, increase_attack=20,
+                      increase_defence=20,
                       cost=60, health=40, speed=5, defence=20,
-                      magic_resistance=30, phys_resistance=30, type='шаман')
+                      magic_resistance=30, phys_resistance=30,
+                      type='шаман', used_skill=False)
 
     def create_horseman(self):
-        return Horseman(fury=30, attack=30, attack_range=7, attack_speed=35,
+        return Horseman(fury=30, attack=30, attack_range=7,
                         attack_type="phys", cost=90, health=80, speed=15,
                         defence=35,
-                        magic_resistance=15, phys_resistance=15, type='всадник')
+                        magic_resistance=15, phys_resistance=15,
+                        type='всадник', used_skill=False)
 
     def create_unit(self, _type):
         _type = _type.lower()
